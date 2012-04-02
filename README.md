@@ -75,26 +75,22 @@ Inherits from events.EventEmitter
 
 ### Options
 
-maxPending (default: -1)
+```maxPending``` (default: -1)  
+Maximum asynchronous jobs.  
+Useful to throttle the number of simultaneous disk-operations.
 
-    Maximum asynchronous jobs.  
-    Useful to throttle the number of simultaneous disk-operations.
+```maxAttempts``` (default: 3)  
+Maximum reattempts on error.  
+Set to 0 to disable reattempts.  
+Set to -1 for infinite reattempts.
 
-maxAttempts (default: 3)
+```attemptTimeout``` (default: 5000 ms)  
+Minimum time to wait before reattempt. In milliseconds.  
+Useful to let network-drives remount, etc.
 
-    Maximum reattempts on error.  
-    Set to 0 to disable reattempts.  
-    Set to -1 for infinite reattempts.
-
-attemptTimeout (default: 5000 ms)
-
-    Minimum time to wait before reattempt. In milliseconds.  
-    Useful to let network-drives remount, etc.
-
-matchRegExp (default: null)
-
-    A RegExp-instance the path to a file must match in order to  
-    emit a "file" event. Set to ```null``` to emit all paths.
+```matchRegExp``` (default: null)  
+A RegExp-instance the path to a file must match in order to  
+emit a "file" event. Set to ```null``` to emit all paths.
 
 ### Properties
 
