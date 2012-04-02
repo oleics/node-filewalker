@@ -6,6 +6,12 @@
     "name": "Oliver Leics",
     "email": "oliver.leics@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oleics/node-filewalker.git"
+  },
+  "contributors": [
+  ],
   "main": "./lib/filewalker",
   "directories": {
     "lib": "./lib"
