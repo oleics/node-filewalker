@@ -4,6 +4,8 @@ Filewalker
 
 ### Fast and rock-solid asynchronous traversing of directories and files for node.js
 
+[![Build Status](https://secure.travis-ci.org/oleics/node-filewalker.png)](http://travis-ci.org/oleics/node-filewalker)
+
 The filewalker-module for node is designed to provide maximum  
 reliance paired with maximum throughput/performance and the  
 ability to throttle that throughput/performance.
