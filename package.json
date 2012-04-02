@@ -1,6 +1,6 @@
 {
   "name": "filewalker",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Fast and rock-solid asynchronous traversing of directories and files for node.js",
   "author": {
     "name": "Oliver Leics",
