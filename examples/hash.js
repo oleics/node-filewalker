@@ -8,7 +8,7 @@ var options = {
   maxPending: 10, // throttle handles
 };
 
-filewalker('c:/', options)
+filewalker('/', options)
   .on('stream', function(rs, p, s, fullPath) {
     var hash = createHash('md5');
     rs.on('data', function(data) {
