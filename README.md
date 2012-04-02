@@ -2,18 +2,20 @@
 Filewalker
 ==========
 
-Fast and rock-solid asynchronous traversing of directories and files for node.js
---------------------------------------------------------------------------------
+**Fast and rock-solid asynchronous traversing of directories and
+files for node.js**
 
 The filewalker-module for node is designed to provide maximum  
 reliance paired with maximum throughput/performance and the  
 ability to throttle that throughput/performance.
 
-### Installation
+Installation
+------------
 
 ```npm install filewalker```
 
-### Usage
+Usage
+-----
 
 Simple directory listing and disk-usage report:
 
@@ -69,11 +71,13 @@ filewalker('c:/', options)
 .walk();
 ```
 
-## Class Filewalker
+Class Filewalker
+================
 
-* inherits from events.EventEmitter
+Inherits from events.EventEmitter
 
-### Options
+Options
+-------
 
 * maxPending (default: -1)  
   Maximum asynchronous jobs.  
@@ -89,7 +93,8 @@ filewalker('c:/', options)
   A RegExp-instance the path to a file must match in order to  
   emit a "file" event. Set to ```null``` to emit all paths.  
 
-### Properties
+Properties
+----------
 
 * maxPending
 * maxAttempts
@@ -108,13 +113,15 @@ filewalker('c:/', options)
 * open
 * detectedMaxOpen
 
-### Methods
+Methods
+-------
 
 * walk()
 * pause()
 * resume()
 
-### Events
+Events
+------
 
 * file
   * relative path
