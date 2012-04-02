@@ -1,7 +1,9 @@
 
-# Filewalker
+Filewalker
+==========
 
-## Fast and rock-solid asynchronous traversing of directories and files for node.js
+Fast and rock-solid asynchronous traversing of directories and files for node.js
+--------------------------------------------------------------------------------
 
 The filewalker-module for node is designed to provide maximum
 reliance paired with maximum throughput/performance and the
@@ -73,9 +75,10 @@ filewalker('c:/', options)
 
 ### Options
 
-* maxPending (default: -1)
-  Maximum asynchronous jobs. Usefull to throttle the number of
-  simultaneous disk-operations.
+#### maxPending (default: -1)
+
+Maximum asynchronous jobs. Usefull to throttle the number of
+simultaneous disk-operations.
   
 * maxAttempts (default: 3)
   Maximum reattempts on error.
