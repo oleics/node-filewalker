@@ -5,8 +5,8 @@ Filewalker
 Fast and rock-solid asynchronous traversing of directories and files for node.js
 --------------------------------------------------------------------------------
 
-The filewalker-module for node is designed to provide maximum
-reliance paired with maximum throughput/performance and the
+The filewalker-module for node is designed to provide maximum  
+reliance paired with maximum throughput/performance and the  
 ability to throttle that throughput/performance.
 
 ### Installation
@@ -75,23 +75,19 @@ filewalker('c:/', options)
 
 ### Options
 
-#### maxPending (default: -1)
-
-Maximum asynchronous jobs. Usefull to throttle the number of
-simultaneous disk-operations.
-  
-* maxAttempts (default: 3)
-  Maximum reattempts on error.
-  Set to 0 to disable reattempts.
+* maxPending (default: -1)  
+  Maximum asynchronous jobs.  
+  Usefull to throttle the number of simultaneous disk-operations.
+* maxAttempts (default: 3)  
+  Maximum reattempts on error.  
+  Set to 0 to disable reattempts.  
   Set to -1 for infinite reattempts.
-  
-* attemptTimeout (default: 5000 ms)
-  Minimum time to wait before reattempt. In milliseconds.
+* attemptTimeout (default: 5000 ms)  
+  Minimum time to wait before reattempt. In milliseconds.  
   Usefull to let diskdrives remount, etc.
-  
-* matchRegExp (default: null)
-  A RegExp-instance the path to a file must match in order to
-  emit a "file" event. Set to ```null``` to emit all paths.
+* matchRegExp (default: null)  
+  A RegExp-instance the path to a file must match in order to  
+  emit a "file" event. Set to ```null``` to emit all paths.  
 
 ### Properties
 
@@ -139,7 +135,8 @@ simultaneous disk-operations.
 * error
   * instance of Error
 
-Notice: There will be no fs.ReadStream created if no listener listens to the 'stream'-event.
+Notice: There will be no fs.ReadStream created if no listener  
+listens to the 'stream'-event.
 
 ## MIT License
 
