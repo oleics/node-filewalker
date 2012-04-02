@@ -1,6 +1,6 @@
 
-Filewalker
-==========
+Node Filewalker
+===============
 
 ### Fast and rock-solid asynchronous traversing of directories and files for node.js
 
