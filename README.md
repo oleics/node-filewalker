@@ -9,13 +9,13 @@ ability to throttle that throughput/performance.
 
 ### Installation
 
-``npm install filewalker``
+```npm install filewalker```
 
 ### Usage
 
 Simple directory listing and disk-usage report:
 
-``
+```js
 var filewalker = require('filewalker');
 
 filewalker('.')
@@ -32,11 +32,11 @@ filewalker('.')
     console.log('%d dirs, %d files, %d bytes', this.dirs, this.files, this.bytes);
   })
 .walk();
-``
+```
 
 Calculate md5-hash for every file:
 
-``
+```js
 var started = Date.now();
 
 var createHash = require('crypto').createHash,
@@ -65,7 +65,7 @@ filewalker('c:/', options)
     console.log('%d dirs, %d files, %d bytes', this.dirs, this.files, this.bytes);
   })
 .walk();
-``
+```
 
 ## Class Filewalker
 
@@ -88,7 +88,7 @@ filewalker('c:/', options)
   
 * matchRegExp (default: null)
   A RegExp-instance the path to a file must match in order to
-  emit a "file" event. Set to ``null`` to emit all paths.
+  emit a "file" event. Set to ```null``` to emit all paths.
 
 ### Properties
 
