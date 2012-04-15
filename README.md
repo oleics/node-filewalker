@@ -73,7 +73,7 @@ filewalker('/', options)
 Class Filewalker
 ----------------
 
-Inherits from events.EventEmitter
+Inherits from [node-fqueue](https://github.com/oleics/node-fqueue)
 
 ### Options
 
@@ -109,9 +109,8 @@ bytes
 errors  
 attempts  
 streamed  
-streamErrors  
 open  
-detectedMaxOpen  
+detectedMaxOpen
 
 ### Methods
 

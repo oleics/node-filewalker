@@ -30,6 +30,9 @@ describe('Filewalker', function() {
     it('are instances of events.EventEmitter too', function() {
       assert.ok(fw instanceof require('events').EventEmitter);
     });
+    it('are instances of fqueue', function() {
+      assert.ok(fw instanceof require('fqueue'));
+    });
     it('should have a .maxPending property <number>', function() {
       assert.ok(fw.maxPending!=null);
       assert.strictEqual(typeof fw.maxPending, 'number');
@@ -155,27 +158,6 @@ describe('Filewalker', function() {
           assert.ok(fw.streamed!=null);
           assert.strictEqual(typeof fw.streamed, 'number');
           assert.strictEqual(fw.streamed, examplesNumOfFiles);
-        });
-        fw.on('done', done);
-        fw.walk();
-      });
-      
-      it('.streamErrors must be 0 if no listener for stream-event', function(done) {
-        fw.on('done', function() {
-          assert.ok(fw.streamErrors!=null);
-          assert.strictEqual(typeof fw.streamErrors, 'number');
-          assert.strictEqual(fw.streamErrors, 0);
-        });
-        fw.on('done', done);
-        fw.walk();
-      });
-      
-      it('.streamErrors must be 0 if listener for stream-event', function(done) {
-        fw.on('stream', function(){});
-        fw.on('done', function() {
-          assert.ok(fw.streamErrors!=null);
-          assert.strictEqual(typeof fw.streamErrors, 'number');
-          assert.strictEqual(fw.streamErrors, 0);
         });
         fw.on('done', done);
         fw.walk();

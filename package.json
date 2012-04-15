@@ -18,6 +18,7 @@
   },
   "engines": {"node": ">= 0.4.x"},
   "dependencies": {
+    "fqueue": "0.0.x"
   },
   "scripts": {
     "test": "mocha -R spec"
