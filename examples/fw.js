@@ -9,7 +9,7 @@ var options = {
   maxPending: -1,
   maxAttempts: 3,
   attemptTimeout: 3000,
-  matchRegExp: /\.(log)$/,
+  // matchRegExp: /\.(log)$/,
   // matchRegExp: /\.(json)|(md)$/,
 };
 
@@ -101,7 +101,6 @@ fw.on('done', function() {
   console.log('%s errors', formatInt(fw.errors));
   process.stdout.write('\n');
   console.log('%s streamed', formatInt(fw.streamed));
-  console.log('%s streamErrors', formatInt(fw.streamErrors));
   console.log('%s detectedMaxOpen', formatInt(fw.detectedMaxOpen));
   console.log('%s attempts', formatInt(fw.attempts));
   
@@ -112,7 +111,6 @@ fw.on('done', function() {
   assert.ok(fw.pending === 0);
   assert.ok(fw.open === 0);
   assert.ok(fw.queue.length === 0);
-  assert.strictEqual(fw.streamed + fw.streamErrors, fw.files);
   
 });
 
