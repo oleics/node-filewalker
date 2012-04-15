@@ -1,6 +1,6 @@
 {
   "name": "filewalker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fast and rock-solid asynchronous traversing of directories and files for node.js",
   "author": {
     "name": "Oliver Leics",
@@ -17,7 +17,8 @@
     "lib": "./lib"
   },
   "engines": {"node": ">= 0.4.x"},
-  "dependencies": {},
+  "dependencies": {
+  },
   "scripts": {
     "test": "mocha -R spec"
   },
