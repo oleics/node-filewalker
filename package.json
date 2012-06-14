@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/oleics/node-filewalker.git"
+    "url": "https://github.com/oleics/node-filewalker.git"
   },
   "contributors": [
   ],
