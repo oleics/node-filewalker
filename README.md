@@ -14,6 +14,12 @@ ability to throttle that throughput/performance.
 
 ```npm install filewalker```
 
+### Run the tests
+
+``sh
+$ npm test
+``
+
 ### Usage
 
 Simple directory listing and disk-usage report:
