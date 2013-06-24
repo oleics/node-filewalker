@@ -16,9 +16,9 @@ ability to throttle that throughput/performance.
 
 ### Run the tests
 
-``sh
+```sh
 $ npm test
-``
+```
 
 ### Usage
 
