@@ -94,6 +94,11 @@ Useful to let network-drives remount, etc.
 A RegExp-instance the path to a file must match in order to  
 emit a "file" event. Set to ```null``` to emit all paths.
 
+```recursive``` (default: true)  
+Traverse in a recursive manner.  
+In case you wish to target only the current directory,  
+disable this.
+
 ### Properties
 
 maxPending  

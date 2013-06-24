@@ -48,6 +48,9 @@ describe('Filewalker', function() {
     it('should have a .matchRegExp property <number>', function() {
       assert.strictEqual(fw.matchRegExp, null);
     });
+    it('should have a .recursive property <boolean>', function() {
+      assert.strictEqual(fw.recursive, true);
+    });
     it('should have a .walk() method', function() {
       assert.ok(fw.walk instanceof Function);
     });
@@ -329,6 +332,26 @@ describe('Filewalker', function() {
         assert.strictEqual(arguments.length, 0);
       });
       fw.on('done', done);
+      fw.walk();
+    });
+  });
+
+  describe('feature: non-recursive walking', function() {
+    var fw;
+    before(function() {
+      fw = filewalker(examplesDir, {recursive: false});
+    });
+    after(function() {
+      fw = null;
+    });
+
+    it('"done" event without recursive', function(done) {
+      fw.on('done', function() {
+        // it could be nicer to check the amount using fs on examplesDir
+        // this works, though, given the structure of /examples doesn't change
+        assert.strictEqual(this.files + this.dirs, 2);
+        done();
+      });
       fw.walk();
     });
   });
