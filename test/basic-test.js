@@ -8,6 +8,12 @@ var examplesNumOfDirs = 1;
 var examplesNumOfFiles = 2;
 var examplesNumOfBytes = 6;
 
+function reallyReadTheReadStream(rs) {
+  // Since NodeJS v0.10 and Streams2 we must subscribe to the data-event of
+  // the file, or the end/close-event will not happen.
+  rs.on('data', function(){});
+}
+
 describe('Filewalker', function() {
   describe('Basics', function() {
     it('Exports one function', function() {
@@ -153,7 +159,9 @@ describe('Filewalker', function() {
       });
       
       it('.streamed must be '+examplesNumOfFiles+' if listener for stream-event', function(done) {
-        fw.on('stream', function(){});
+        fw.on('stream', function(rs){
+          reallyReadTheReadStream(rs);
+        });
         fw.on('done', function() {
           assert.ok(fw.streamed!=null);
           assert.strictEqual(typeof fw.streamed, 'number');
@@ -164,7 +172,9 @@ describe('Filewalker', function() {
       });
       
       it('.open must be 0 if listener for stream-event', function(done) {
-        fw.on('stream', function(){});
+        fw.on('stream', function(rs){
+          reallyReadTheReadStream(rs);
+        });
         fw.on('done', function() {
           assert.ok(fw.open!=null);
           assert.strictEqual(typeof fw.open, 'number');
@@ -175,7 +185,9 @@ describe('Filewalker', function() {
       });
       
       it('.detectedMaxOpen must be -1 if listener for stream-event', function(done) {
-        fw.on('stream', function(){});
+        fw.on('stream', function(rs){
+          reallyReadTheReadStream(rs);
+        });
         fw.on('done', function() {
           assert.ok(fw.detectedMaxOpen!=null);
           assert.strictEqual(typeof fw.detectedMaxOpen, 'number');
@@ -237,6 +249,7 @@ describe('Filewalker', function() {
           assert.ok(s instanceof require('fs').Stats, 'Instance of fs.Stats');
           assert.ok(fullPath instanceof String || typeof fullPath === 'string', 'Type or instance of string');
           fired += 1;
+          reallyReadTheReadStream(rs);
         });
         fw.on('done', function() {
           assert.strictEqual(fired, examplesNumOfFiles);
@@ -324,6 +337,7 @@ describe('Filewalker', function() {
         assert.ok(p instanceof String || typeof p === 'string', 'Type or instance of string');
         assert.ok(s instanceof require('fs').Stats, 'Instance of fs.Stats');
         assert.ok(fullPath instanceof String || typeof fullPath === 'string', 'Type or instance of string');
+        reallyReadTheReadStream(rs);
       });
       fw.on('done', function() {
         assert.strictEqual(arguments.length, 0);
