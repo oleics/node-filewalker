@@ -1,5 +1,3 @@
-require('polyfill-promise/register');
-
 var assert = require('assert');
 var filewalker = require('..');
 
