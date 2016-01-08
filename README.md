@@ -6,9 +6,7 @@ Node Filewalker
 
 [![Build Status](https://secure.travis-ci.org/oleics/node-filewalker.png)](http://travis-ci.org/oleics/node-filewalker)
 
-The filewalker-module for node is designed to provide maximum
-reliance paired with maximum throughput/performance and the
-ability to throttle that throughput/performance.
+The filewalker-module for node is designed to provide maximum reliance paired with maximum throughput/performance and the ability to throttle that throughput/performance.
 
 ### Installation
 
@@ -107,27 +105,28 @@ disable this.
 
 ### Properties
 
-maxPending
-maxAttempts
-attemptTimeout
-matchRegExp
-
-pending
-dirs
-files
-total
-bytes
-errors
-attempts
-streamed
-open
-detectedMaxOpen
+* maxPending
+* maxAttempts
+* attemptTimeout
+* matchRegExp
+* pending
+* dirs
+* files
+* total
+* bytes
+* errors
+* attempts
+* streamed
+* open
+* detectedMaxOpen
 
 ### Methods
 
-walk() // returns a Promise
-pause()
-resume()
+`walk()` // returns a Promise
+
+`pause()`
+
+`resume()`
 
 ### Events
 
@@ -150,8 +149,7 @@ resume()
 * error
   * instance of Error
 
-Notice: There will be no fs.ReadStream created if no listener
-listens to the 'stream'-event.
+Notice: There will be no fs.ReadStream created if no listener listens to the 'stream'-event.
 
 MIT License
 -----------
