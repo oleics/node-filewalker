@@ -1,4 +1,3 @@
-
 var assert = require('assert');
 var filewalker = require('..');
 
@@ -23,7 +22,7 @@ describe('Filewalker', function() {
       assert.ok(filewalker() instanceof Object);
     });
   });
-  
+
   describe('Instances of a filewalker-class', function() {
     var fw;
     beforeEach(function() {
@@ -32,7 +31,7 @@ describe('Filewalker', function() {
     afterEach(function() {
       fw = null;
     });
-    
+
     it('are instances of events.EventEmitter too', function() {
       assert.ok(fw instanceof require('events').EventEmitter);
     });
@@ -69,7 +68,18 @@ describe('Filewalker', function() {
     it('should have a .on() method', function() {
       assert.ok(fw.on instanceof Function);
     });
-    
+
+    describe('return value of .walk()', function() {
+      it('should be a Promise', function (done) {
+        fw.on('done', done);
+        assert(fw.walk() instanceof Promise);
+      });
+      it('should not be a filewalker', function (done) {
+        fw.on('done', done);
+        assert(!(fw.walk() instanceof filewalker))
+      });
+    });
+
     describe('properties after a call to .walk()', function() {
       it('.pending must be 0', function(done) {
         fw.on('done', function() {
@@ -80,7 +90,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.paused must be false', function(done) {
         fw.on('done', function() {
           assert.ok(fw.paused!=null);
@@ -90,7 +100,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.dirs must be '+examplesNumOfDirs, function(done) {
         fw.on('done', function() {
           assert.ok(fw.dirs!=null);
@@ -100,7 +110,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.files must be '+examplesNumOfFiles, function(done) {
         fw.on('done', function() {
           assert.ok(fw.files!=null);
@@ -110,7 +120,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.total must be '+(examplesNumOfFiles+examplesNumOfDirs), function(done) {
         fw.on('done', function() {
           assert.ok(fw.total!=null);
@@ -120,7 +130,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.bytes must be '+examplesNumOfBytes, function(done) {
         fw.on('done', function() {
           assert.ok(fw.bytes!=null);
@@ -130,7 +140,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.errors must be 0', function(done) {
         fw.on('done', function() {
           assert.ok(fw.errors!=null);
@@ -140,7 +150,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.attempts must be 0', function(done) {
         fw.on('done', function() {
           assert.ok(fw.attempts!=null);
@@ -150,7 +160,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.streamed must be 0 if no listener for stream-event', function(done) {
         fw.on('done', function() {
           assert.ok(fw.streamed!=null);
@@ -160,7 +170,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.streamed must be '+examplesNumOfFiles+' if listener for stream-event', function(done) {
         fw.on('stream', function(rs){
           reallyReadTheReadStream(rs);
@@ -173,7 +183,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.open must be 0 if listener for stream-event', function(done) {
         fw.on('stream', function(rs){
           reallyReadTheReadStream(rs);
@@ -186,7 +196,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('.detectedMaxOpen must be -1 if listener for stream-event', function(done) {
         fw.on('stream', function(rs){
           reallyReadTheReadStream(rs);
@@ -200,9 +210,8 @@ describe('Filewalker', function() {
         fw.walk();
       });
     });
-    
+
     describe('events after .walk()', function() {
-      
       it('"done" event with 0 arguments', function(done) {
         fw.on('done', function() {
           assert.strictEqual(arguments.length, 0);
@@ -210,7 +219,7 @@ describe('Filewalker', function() {
         });
         fw.walk();
       });
-      
+
       it('"dir" event with 3 arguments', function(done) {
         var fired = 0;
         fw.on('dir', function(p, s, fullPath) {
@@ -226,7 +235,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('"file" event with 3 arguments', function(done) {
         var fired = 0;
         fw.on('file', function(p, s, fullPath) {
@@ -242,7 +251,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('"stream" event with 4 arguments', function(done) {
         var fired = 0;
         fw.on('stream', function(rs, p, s, fullPath) {
@@ -260,7 +269,7 @@ describe('Filewalker', function() {
         fw.on('done', done);
         fw.walk();
       });
-      
+
       it('"pause" event with 0 arguments', function(done) {
         var fired = 0;
         fw.on('pause', function() {
@@ -275,7 +284,7 @@ describe('Filewalker', function() {
         fw.walk();
         fw.pause();
       });
-      
+
       it('"resume" event with 0 arguments', function(done) {
         var fired = 0;
         fw.on('pause', function() {
@@ -293,7 +302,7 @@ describe('Filewalker', function() {
         fw.pause();
       });
     });
-    
+
     describe('.pause() and .resume()', function() {
       it('"done" event must fire if they play ping-pong', function(done) {
         var fired = 0;
@@ -314,7 +323,7 @@ describe('Filewalker', function() {
       });
     });
   });
-  
+
   describe('feature: filewalker on a path to a file', function() {
     var fw;
     before(function() {
@@ -323,7 +332,7 @@ describe('Filewalker', function() {
     after(function() {
       fw = null;
     });
-    
+
     it('emits the "stream", "file" and "done" event', function(done) {
       fw.on('dir', function() {
         assert.ok(false, '"dir" event must not fire');
