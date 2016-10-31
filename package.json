@@ -19,6 +19,7 @@
     "node": ">= 0.4.x"
   },
   "dependencies": {
+    "contains-path": "^0.1.0",
     "fqueue": "0.0.x"
   },
   "scripts": {
