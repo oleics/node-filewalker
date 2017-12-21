@@ -381,7 +381,8 @@ describe('Filewalker', function() {
       });      
       it('when "stream", it should be using the given readStream option', function(done) {
         fw.on('stream', function(rs, p, s, fullPath) {
-          assert.strictEqual( rs.highWaterMark, fw.highWaterMark );
+          assert.strictEqual( fw.readStream.highWaterMark, myHighWaterMark );
+          assert.strictEqual( fw.readStream.highWaterMark, rs._readableState.highWaterMark );
           reallyReadTheReadStream(rs);
         });
         fw.on('done', done);
