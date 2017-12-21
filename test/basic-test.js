@@ -369,4 +369,25 @@ describe('Filewalker', function() {
       fw.walk();
     });
   });
+
+  describe('feature: use given readStream options', function() {
+      var myHighWaterMark = 1024*1024;
+      var fw;
+      before(function() {
+        fw = filewalker(examplesFile, { readStream: { highWaterMark: myHighWaterMark } } );
+      });
+      after(function() {
+        fw = null;
+      });      
+      it('when "stream", it should be using the given readStream option', function(done) {
+        fw.on('stream', function(rs, p, s, fullPath) {
+          assert.strictEqual( fw.readStream.highWaterMark, myHighWaterMark );
+          assert.strictEqual( fw.readStream.highWaterMark, rs._readableState.highWaterMark );
+          reallyReadTheReadStream(rs);
+        });
+        fw.on('done', done);
+        fw.walk();
+      });      
+
+  });
 });
