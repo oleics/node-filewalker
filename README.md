@@ -6,8 +6,8 @@ Node Filewalker
 
 [![Build Status](https://secure.travis-ci.org/oleics/node-filewalker.png)](http://travis-ci.org/oleics/node-filewalker)
 
-The filewalker-module for node is designed to provide maximum  
-reliance paired with maximum throughput/performance and the  
+The filewalker-module for node is designed to provide maximum
+reliance paired with maximum throughput/performance and the
 ability to throttle that throughput/performance.
 
 ### Installation
@@ -83,50 +83,53 @@ Inherits from [node-fqueue](https://github.com/oleics/node-fqueue)
 
 ### Options
 
-```maxPending``` (default: -1)  
-Maximum asynchronous jobs.  
+```maxPending``` (default: -1)
+Maximum asynchronous jobs.
 Useful to throttle the number of simultaneous disk-operations.
 
-```maxAttempts``` (default: 3)  
-Maximum reattempts on error.  
-Set to 0 to disable reattempts.  
+```maxAttempts``` (default: 3)
+Maximum reattempts on error.
+Set to 0 to disable reattempts.
 Set to -1 for infinite reattempts.
 
-```attemptTimeout``` (default: 5000 ms)  
-Minimum time to wait before reattempt. In milliseconds.  
+```attemptTimeout``` (default: 5000 ms)
+Minimum time to wait before reattempt. In milliseconds.
 Useful to let network-drives remount, etc.
 
-```matchRegExp``` (default: null)  
-A RegExp-instance the path to a file must match in order to  
+```matchRegExp``` (default: null)
+A RegExp-instance the path to a file must match in order to
 emit a "file" event. Set to ```null``` to emit all paths.
 
-```recursive``` (default: true)  
-Traverse in a recursive manner.  
-In case you wish to target only the current directory,  
+```recursive``` (default: true)
+Traverse in a recursive manner.
+In case you wish to target only the current directory,
 disable this.
+
+```fs``` (default: fs)
+Filesystem library to use (e.g., [fs](https://nodejs.org/api/fs.html), [memfs](https://github.com/streamich/memfs))
 
 ### Properties
 
-maxPending  
-maxAttempts  
-attemptTimeout  
+maxPending
+maxAttempts
+attemptTimeout
 matchRegExp
 
-pending  
-dirs  
-files  
-total  
-bytes  
-errors  
-attempts  
-streamed  
-open  
+pending
+dirs
+files
+total
+bytes
+errors
+attempts
+streamed
+open
 detectedMaxOpen
 
 ### Methods
 
-walk()  
-pause()  
+walk()
+pause()
 resume()
 
 ### Events
@@ -150,7 +153,7 @@ resume()
 * error
   * instance of Error
 
-Notice: There will be no fs.ReadStream created if no listener  
+Notice: There will be no fs.ReadStream created if no listener
 listens to the 'stream'-event.
 
 MIT License
